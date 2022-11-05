@@ -5,13 +5,8 @@
 int main() {
     int x;
     std::cin >> x;
-    if (x >= 10) {
-        if (x < 20) {
-            std::cout << "W przedziale\n";
-        }
-        else {
-            std::cout << "Poza przedzialem\n";
-        }
+    if (x >= 10 && x < 20) {
+        std::cout << "W przedziale\n";
     }
     else {
         std::cout << "Poza przedzialem\n";
