@@ -7,10 +7,8 @@ int main() {
     int n = 0;
     std::cin >> n;
     
-    int i = 0;
-    while (i < n) {
+    for (int i = 0; i < n; i += 1) {
         std::cout << "#";
-        i += 1;
     }
     std::cout << "\n";
 }
