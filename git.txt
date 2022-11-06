@@ -1,0 +1,30 @@
+git init - tworzy repozytorium git w obecnym katalogu
+
+git status - wyświetla informacje o obecnym statusie repozytorium
+
+git add [nazwa pliku] - dodaje ten plik do obecnie budowanego commita
+
+git commit -m "[commit message]" - zatwierdza obecnie budowany commit z podanym opisem
+
+Ustawienie adresu email i nazwy autora (wymagane jednorazowo; jak nie ustawiliśmy to upomni się samo)
+git config --global user.email "[email]"
+git config --global user.name "[name]"
+
+git config --get user.name - podejrzenie jak ustawione jest user.name
+
+git log - wyświetla historię commitów
+
+git show [hash commita] - pokazuje szczegóły zadanego commita (jeśli nie podamy hasha to pokaże ostatni) 
+
+git remote add [nazwa] [adres] - dodaje odniesienie `nazwa` do zdalnego repozytorium pod zadanym adresem.
+
+git push [nazwa] [branch] - wysyła nowe commity do zdalnego repozytorium `nazwa` na gałąź `branch`
+
+git pull [nazwa] [branch] - pobiera nowe commity z zadanego brancha z repozytorium `nazwa`. (z reguły wystarcza samo 'git pull')
+
+git clone [adres] - kopiuje repozytorium spod zadanego adresu
+
+ssh-keygen - wygenerowanie klucza do uwierzytelniania się na githubie
+
+kopalnia wiedzy: https://git-scm.com/docs
+
