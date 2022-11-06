@@ -7,21 +7,12 @@ int main() {
     int c = 0;
     std::cin >> a >> b >> c;
     
-    if (a > b) {
-        if (a > c) {
-            std::cout << a;
-        }
-        else {
-            std::cout << c;
-        }
+    int max = a;
+    if (b > max) {
+        max = b;
     }
-    else {
-        if (b > c) {
-            std::cout << b;
-        }
-        else {
-            std::cout << c;
-        }
+    if (c > max) {
+        max = c;
     }
-    std::cout << "\n";
+    std::cout << max << "\n";
 }
