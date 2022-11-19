@@ -2,14 +2,16 @@
 
 // n! = 1 * 2 * 3 * ... * n
 
+// Równoważna definicja:
+// 0! = 1
+// n! = n * (n - 1)!
+
 #include <iostream>
 
 int silnia(int n) {
-    int iloczyn = 1;
-    for (int i = 1; i <= n; i += 1) {
-        iloczyn *= i;
-    }
-    return iloczyn;
+    if (n == 0)
+        return 1;
+    return n * silnia(n - 1);
 }
 
 int main() {
