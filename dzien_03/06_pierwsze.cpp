@@ -19,8 +19,12 @@ bool czy_pierwsza(int n) {
 //     return suma_dzielnikow(n) == 1;
     if (n <= 1)
         return false;
+    if (n == 2)
+        return true;
+    if (n % 2 == 0)
+        return false;
     
-    for (int i = 2; i < n; i += 1) {
+    for (int i = 3; i < n; i += 2) {
         if (n % i == 0)
             return false;
     }
@@ -28,8 +32,8 @@ bool czy_pierwsza(int n) {
 }
 
 int main() {
-    int n;
-    std::cin >> n;
+    int n = 1000000007;
+//     std::cin >> n;
     if (czy_pierwsza(n)) {
         std::cout << "Pierwsza\n";
     }
