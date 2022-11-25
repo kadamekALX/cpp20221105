@@ -1,0 +1,30 @@
+1. Napisz funkcje
+	int rownanie_kwadratowe(double a, double b, double c, double* rozw1, double* rozw2)
+ktora zwroci informacje ile rozwiazan ma rownanie postaci
+	0 = a * x^2 + b * x + c
+Jesli rozwiazan jest 1 lub 2 to powinny one zostac zapisane pod adresami rozw1 i rozw2 (analogicznie do przerabianej na zajeciach funkcji rownanie_liniowe).
+Do policzenia pierwiastka sluzy funkcja std::sqrt() dostepna w naglowku <cmath>.
+
+2. Napisz program, który przyjmie 10 liczb całkowitych i wypisze z nich najpierw parzyste, a potem nieparzyste.
+
+3. Napisz funkcję srednia(), która przyjmie jako argumenty tablicę liczb całkowitych i jej rozmiar, po czym zwróci średnią arytmetyczną elementów w tej tablicy
+
+4. Napisz funkcję ile wiekszych(), która przyjmie jako argumenty tablicę liczb całkowitych, jej rozmiar i liczbę n, po czym zwróci informację ile elementów w tablicy jest większych od n.
+
+5. Napisz funkcje ile_wspolnych(), ktora przyjmie 2 tablice liczb calkowitych (wraz z niezbednymi do ich przetworzenia informacjami), po czym zwroci informacje ile elementow z pierwszej tablicy wystepuje w drugiej.
+
+6. Napisz funkcje swap(), ktora zamieni wartosci 2 zmiennych miejscami. Przykladowe uzycie:
+	int a = 5, b = 10;
+	swap(&a, &b);
+	std::cout << a << std::endl; //powinno wypisac 10
+	std::cout << b << std::endl; //powinno wypisac 5
+
+
+7. Napisz funkcję idx_min(), ktora przyjmie tablicę i jej rozmiar, a następnie zwroci _indeks_ najmniejszego elementu w tej tablicy.
+
+8. Napisz funkcje sortuj(), ktora przyjmie tablice i jej rozmiar, a nastepnie posortuje zawartosc tablicy dowolnym wybranym algorytmem sortowania roznym od babelkowego. Sugerowane algorytmy:
+https://pl.wikipedia.org/wiki/Sortowanie_przez_wybieranie
+https://pl.wikipedia.org/wiki/Sortowanie_przez_wstawianie
+Duza lista algorytmow sortujacych dostepna jest tu:
+https://en.wikipedia.org/wiki/Sorting_algorithm
+Ciekawskim polecam sprobowac zaimplementowac bogosort. ;)
