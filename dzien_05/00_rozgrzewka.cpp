@@ -9,22 +9,12 @@ bool pole_ok(int x, int y) {
 //pola 0-7
 int ile_ruchow(int x, int y) {
     int suma = 0;
-    if (pole_ok(x + 2, y + 1))
-        suma += 1;
-    if (pole_ok(x + 2, y - 1))
-        suma += 1;
-    if (pole_ok(x - 2, y + 1))
-        suma += 1;
-    if (pole_ok(x - 2, y - 1))
-        suma += 1;
-    if (pole_ok(x + 1, y + 2))
-        suma += 1;
-    if (pole_ok(x + 1, y - 2))
-        suma += 1;
-    if (pole_ok(x - 1, y + 2))
-        suma += 1;
-    if (pole_ok(x - 1, y - 2))
-        suma += 1;
+    const int wspx[8] = {2, 2, -2, -2, 1, 1, -1, -1};
+    const int wspy[8] = {1, -1, 1, -1, 2, -2, 2, -2};
+    for (int i = 0; i < 8; i += 1) {
+        if (pole_ok(x + wspx[i], y + wspy[i]))
+            suma += 1;
+    }
     return suma;
 }
 
