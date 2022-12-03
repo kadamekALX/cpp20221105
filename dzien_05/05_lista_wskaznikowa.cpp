@@ -7,11 +7,11 @@ struct Elem {
 
 // wstawiamy nowy element na początek listy
 // zwracamy adres nowego elementu
-Elem* wstaw(Elem* lista, int nowa_wartosc) {
+void wstaw(Elem** lista, int nowa_wartosc) {
     Elem* tmp = new Elem; //tworzymy nowy element
     tmp->wartosc = nowa_wartosc; // to samo co (*tmp).wartosc = nowa_wartosc;
-    tmp->nastepny = lista;
-    return tmp;
+    tmp->nastepny = *lista;
+    *lista = tmp;
 }
 
 void wypisz(Elem* lista) {
@@ -33,12 +33,9 @@ void zwolnij(Elem* lista) {
 
 int main() {
     Elem* lista = nullptr;
-    lista = wstaw(lista, 5);
-    lista = wstaw(lista, 3);
-    lista = wstaw(lista, 6);
-    for (int i = 0; i < 100; i += 1) {
-        lista = wstaw(lista, i);
-    }
+    wstaw(&lista, 5);
+    wstaw(&lista, 3);
+
     wypisz(lista);
     
     zwolnij(lista);
