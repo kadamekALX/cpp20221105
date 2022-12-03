@@ -9,10 +9,10 @@ bool pole_ok(int x, int y) {
 //pola 0-7
 int ile_ruchow(int x, int y) {
     int suma = 0;
-    const int wspx[8] = {2, 2, -2, -2, 1, 1, -1, -1};
-    const int wspy[8] = {1, -1, 1, -1, 2, -2, 2, -2};
+    const int wsp[8][2] = {{2, 1}, {2, -1}, {-2, 1}, {-2, -1},
+                           {1, 2}, {1, -2}, {-1, 2}, {-1, -2}};
     for (int i = 0; i < 8; i += 1) {
-        if (pole_ok(x + wspx[i], y + wspy[i]))
+        if (pole_ok(x + wsp[i][0], y + wsp[i][1]))
             suma += 1;
     }
     return suma;
