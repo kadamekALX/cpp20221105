@@ -25,6 +25,7 @@ struct Ulamek {
 int main() {
     Ulamek a{2, 0};
     Ulamek b{2, 3};
+//     a.mianownik = 0;
     Ulamek c = a.mnoz(b);
     a.wypisz();
     b.wypisz();
