@@ -1,0 +1,68 @@
+1. Napisz funkcję, która sprawdzi, czy podany napis składa się tylko z cyfr.
+
+2. Napisz funkcję, która zaszyfruje podany napis szyfrem Cezara (https://pl.wikipedia.org/wiki/Szyfr_Cezara) z podanym przesunięciem (użycie tej funkcji z ujemnym przesunięciem powinno odszyfrować zaszyfrowany napis).
+
+3. Przyjmij od użytkownika 5 wierszy dlugości 5, składających się ze znaków '.' i '*', gdzie:
+ - '.' oznacza puste pole
+ - '*' oznacza minę
+ Wypisz na ekran te napisy, ale zamiast każdego pustego pola wypisz liczbę oznaczającą z iloma
+ minami sąsiaduje (jak w grze Saper). Przykładowo, dla danych:
+..*..
+*....
+.*...
+.*.*.
+....*
+powinno zostać wypisane:
+12*10
+*3210
+3*311
+2*3*2
+1122*
+
+hint: możesz stworzyć tablicę stringow (std::string tab[5])
+
+4. Rozszerz listę wskaźnikową z zajęć o funkcje (typy argumentów wedle zapotrzebowania):
+- dodaj_na_koniec(lista, x) - dodaje element x na końcu listy.
+- znajdz(lista, x) - zwraca ADRES pierwszego elementu o wartości x na liście lub nullptr jeśli takiego nie ma.
+- nty(lista, n) - zwraca adres n-tego elementu w liście (licząc od 0) lub nullptr jeśli takiego nie ma.
+- dlugosc(lista) - zwraca liczbę elementów w liście.
+- z_tablicy(tab, n) - zwraca nowa listę zawierającą wszystkie n elementów z tablicy tab (w tej samej kolejności).
+
+(*)5. Stwórz pomocniczą strukturę Lista, która będzie przechowywała wskaźnik na pierwszy Element listy (z zadania powyżej) oraz
+informacje pozwalające na obsłużenie dodaj_na_koniec() oraz dlugosc() w czasie O(1) zamiast O(n).
+Zmodyfikuj wszystkie funkcje tak, aby przyjmowały strukturę Lista zamiast wskaźnika na pierwszy element.
+Stwórz funkcję
+	Lista nowa_lista();
+która zwraca odpowiednio zainicjalizowany obiekt Lista reprezentujący pustą listę.
+
+(**)6. Przerób listę tak, aby każdy Element zawierał wskaźniki na poprzedni i na następny Element w liście.
+Dopisz funkcje:
+- wypisz_wstecz(lista) - wypisuje elementy listy w odwrotnej kolejności.
+- usun(lista, *wsk) - usuwa z listy Element wskazywany przez wskaźnik wsk.
+- usun(lista, n) - usuwa z listy n-ty Element.
+
+7. Napisz klasę Kolo, która będzie przechowywać współrzędne środka koła oraz długość jego promienia. Klasa powinna zawierać metody:
+- double pole() const - zwraca pole koła (dla uproszczenia możemy przyjąć, że pi = 3.14).
+- bool czesc_wspolna(const Kolo& inne) const - zwraca informację, czy koło ma jakąś część wspólną z innym kołem
+
+8. Wyobraźmy sobie robota, który może poruszać się po płaszczyźnie naprzód i obracać w lewo lub prawo o 90 stopni.
+Napisz klasę Robot, która będzie przechowywała informacje o położeniu robota na płaszczyźnie (2 liczby całkowite) oraz
+kierunku, w jakim jest zwrócony (np. 0 - północ(N), 1 - wschód(E), 2 - południe(S), 3 - zachód(W)).
+Klasa powinna udostępniać metody:
+	- wypisz() - wypisuje połozenie i zwrot robota,
+	- lewo() - zmienia kierunek, w którym zwrócony jest Robot o 90 stopni w kierunku przeciwnym do ruchu wskazówek zegara (np. z północy obracamy się na zachód),
+	- prawo() - zmienia kierunek, w którym zwrócony jest Robot o 90 stopni w kierunku zgodnym z ruchem wskazówek zegara (np. z północy obracamy sie na wschód),
+	- naprzod() - przemieszcza robota krok w kierunku, w którym obecnie jest zwrócony (przykładowo krok na wschód powoduje zmianę współrzędnych z (x, y) na (x + 1, y)),
+	- wykonaj(ciag_instrukcji), gdzie ciag_instrukcji to napis złożony z liter N, P, L oznaczających odpowiednio: Naprzód, Prawo, Lewo (tzn. instrukcja N odpowiada jednemu wywołaniu metody naprzod(), P - prawo(), L - lewo()).
+		Wywołanie metody wykonaj() powinno przemieścić robota zgodnie z przekazanymi instrukcjami.
+		Przykład:
+		- początkowe położenie robota: (0, 0), zwrot: N,
+		- ciąg instrukcji: NNPNLNPP,
+		- końcowe położenie robota: (1, 3), zwrot: S.
+
+9. Zaimplementuj dla klasy Ulamek zestaw operatorów pozwalających na wykonywanie następujących działań:
++, -, *, /, +=, -=, *= /=, <, >, <=, >=, ==, !=
+Działania powinno dać się wykonywać dla par Ulamek-Ulamek, par Ulamek-int oraz (tam gdzie ma to sens) int-Ulamek.
+
+10. Napisz program, który przyjmie od użytkownika 3 liczby: N, D i M, a następnie wypisze sumę N rzutów D-ścienną kostką, powiększoną o modyfikator M.
+Przykładowo, dla N=2, D=6, M=1 rzucamy dwoma 6-ściennymi kostkami, sumujemy wyniki i do tej sumy dodajemy 1.
