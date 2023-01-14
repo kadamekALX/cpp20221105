@@ -36,6 +36,10 @@ Tablica::Tablica(const Tablica& t) {
 
 void Tablica::operator=(const Tablica& t) {
     std::cout << "kopiujacy operator przypisania\n";
+    if (this == &t) {
+        std::cout << "Samoprzypisanie!\n";
+        return;
+    }
     usun();
     skopiuj(t);
 }
@@ -87,4 +91,5 @@ int main() {
     w.wypisz();
     t = w; // tu nie zostanie wywołany konstruktor kopiujacy! To wywoła: t.operator=(w)
     t.wypisz();
+    t = t;
 }
