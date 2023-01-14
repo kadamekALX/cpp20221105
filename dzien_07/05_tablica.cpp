@@ -13,6 +13,9 @@ public:
     void ustaw(int idx, int wartosc);
     int daj(int idx) const;
 private:
+    
+    void skopiuj(const Tablica& t);
+    void usun(); //metoda prywatna
     int* tab;
     int rozm;
 };
@@ -28,20 +31,17 @@ Tablica::Tablica(int n) {
 
 Tablica::Tablica(const Tablica& t) {
     std::cout << "konstruktor kopiujacy\n";
-    rozm = t.rozm; // ustawiamy rozmiar na taki sam jak w tablicy t
-    tab = new int[rozm];
-    for (int i = 0; i < rozm; i += 1) {
-        tab[i] = t.tab[i];
-    }
+    skopiuj(t);
 }
 
 void Tablica::operator=(const Tablica& t) {
     std::cout << "kopiujacy operator przypisania\n";
-    //TODO uzupelnic
+    usun();
+    skopiuj(t);
 }
 
 Tablica::~Tablica() { //destruktor
-    delete[] tab;
+    usun();
 }
 
 void Tablica::wypisz() const {
@@ -63,6 +63,18 @@ int Tablica::daj(int idx) const {
     return tab[idx];
 }
 
+void Tablica::skopiuj(const Tablica& t) {
+    rozm = t.rozm; // ustawiamy rozmiar na taki sam jak w tablicy t
+    tab = new int[rozm];
+    for (int i = 0; i < rozm; i += 1) {
+        tab[i] = t.tab[i];
+    }
+}
+
+void Tablica::usun() {
+    delete[] tab;
+}
+
 int main() {
     Tablica t{5};
     t.ustaw(0, 10);
@@ -75,5 +87,4 @@ int main() {
     w.wypisz();
     t = w; // tu nie zostanie wywołany konstruktor kopiujacy! To wywoła: t.operator=(w)
     t.wypisz();
-    
 }
