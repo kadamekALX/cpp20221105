@@ -10,8 +10,8 @@ public:
     
     void wypisz() const;
     int rozmiar() const;
-    int& daj(int idx);
-    const int& daj(int idx) const; //przeładowanie metody po 'const' - constowa wersja zostanie wywołana tylko na const obiektach
+    int& operator[](int idx);
+    const int& operator[](int idx) const; //przeładowanie metody po 'const' - constowa wersja zostanie wywołana tylko na const obiektach
 private:
     
     void skopiuj(const Tablica& t);
@@ -59,12 +59,12 @@ int Tablica::rozmiar() const {
     return rozm;
 }
 
-int& Tablica::daj(int idx) {
+int& Tablica::operator[](int idx) {
 //     std::cout << "nieconst daj\n";
     return tab[idx];
 }
 
-const int& Tablica::daj(int idx) const {
+const int& Tablica::operator[](int idx) const {
 //     std::cout << "const daj\n";
     return tab[idx];
 }
@@ -86,15 +86,15 @@ void wypisz_ladnie(const Tablica& tab) {
     for (int i = 0; i < tab.rozmiar(); i += 1) {
         if (i > 0)
             std::cout << ", ";
-        std::cout << tab.daj(i);
+        std::cout << tab[i];
     }
     std::cout << "]\n";
 }
 
 int main() {
     Tablica t{5};
-    t.daj(3) = 13;
+    t[3] = 13; // to wywoła: t.operator[](3) = 13;
     t.wypisz();
-    std::cout << t.daj(3) << '\n';
+    std::cout << t[3] << '\n';
     wypisz_ladnie(t);
 }
