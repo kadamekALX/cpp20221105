@@ -3,8 +3,10 @@
 class Tablica {
 public:
     Tablica(int n);
-    Tablica(const Tablica& t); // konstruktor kopiujący
+    Tablica(const Tablica& t); // konstruktor kopiujący - tworzy nowy obiekt na podstawie istniejącego
     ~Tablica();
+    
+    void operator=(const Tablica& t); // kopiujący operator przypisania - zmienia _istniejący_ obiekt na podstawie istniejącego obiektu
     
     void wypisz() const;
     int rozmiar() const;
@@ -22,6 +24,20 @@ Tablica::Tablica(int n) {
     for (int i = 0; i < n; i += 1) {
         tab[i] = 0;
     }
+}
+
+Tablica::Tablica(const Tablica& t) {
+    std::cout << "konstruktor kopiujacy\n";
+    rozm = t.rozm; // ustawiamy rozmiar na taki sam jak w tablicy t
+    tab = new int[rozm];
+    for (int i = 0; i < rozm; i += 1) {
+        tab[i] = t.tab[i];
+    }
+}
+
+void Tablica::operator=(const Tablica& t) {
+    std::cout << "kopiujacy operator przypisania\n";
+    //TODO uzupelnic
 }
 
 Tablica::~Tablica() { //destruktor
@@ -49,6 +65,15 @@ int Tablica::daj(int idx) const {
 
 int main() {
     Tablica t{5};
+    t.ustaw(0, 10);
     Tablica q{t};
+    q.ustaw(1, 20);
+    Tablica w = q; //to samo co: Tablica w{q};
+    w.ustaw(2, 30);
+    t.wypisz();
+    q.wypisz();
+    w.wypisz();
+    t = w; // tu nie zostanie wywołany konstruktor kopiujacy! To wywoła: t.operator=(w)
+    t.wypisz();
     
 }
