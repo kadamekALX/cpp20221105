@@ -1,24 +1,44 @@
 #include <iostream>
+#include <vector>
 
-bool dzielenie(int a, int b, int* result) {
-    if (b == 0) {
-        std::cerr << "Nie dziel przez 0!\n";
-        return false;
+class A {
+public:
+    A() {
+        std::cout << "A()\n";
     }
-    *result = a / b;
-    return true;
+    ~A() {
+        std::cout << "~A()\n";
+    }
+};
+
+int dzielenie(int a, int b) {
+    if (b == 0) {
+//         throw "Podzielono przez 0!";
+        throw 42;
+    }
+    return a / b;
 }
 
 int main() {
-    int wynik;
-    if (!dzielenie(5, 2, &wynik)) {
-        std::cerr << "Blad!\n";
-        return 1;
+    try {
+        A a;
+        std::cout << dzielenie(5, 2) << '\n';
+        std::cout << dzielenie(3, 0) << '\n';
     }
-    std::cout << wynik << '\n';
-    if (!dzielenie(3, 0, &wynik)) {
-        std::cerr << "Blad!\n";
-        return 1;
+    catch (const char* str) {
+        //tu robimy obsługę wyjątku
+        std::cout << "Blad: " << str << '\n';
     }
-    std::cout << wynik << '\n';
+    catch (int x) {
+        std::cout << "Zlapalem int " << x << '\n';
+    }
+//     catch (...) { // ten catch złapie wszystko. Raczej nie stosujemy, bo jeśli nie byliśmy gotowi na jakiś wyjątek to nie wiemy jak go obsłużyć
+//         std::cout << "Zlapalem COŚ\n";
+//         throw; // throw wewnątrz catch rzuci dalej ten sam wyjątek, który został złapany
+//     }
+    
+    std::cout << "program dziala dalej...\n";
+    
+    std::vector<int> tab;
+    std::cout << tab.at(3) << '\n'; // std::out_of_range
 }
