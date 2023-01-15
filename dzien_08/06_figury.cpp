@@ -71,10 +71,17 @@ void wypisz_pole(Kwadrat* k) {
 int main() {
     Kwadrat k{7};
     Prostokat p{3, 7};
+    Prostokat p2{1.5, 2.5};
+    
+    Kwadrat* tablica[3];
+    tablica[0] = &p2;
+    tablica[1] = &k;
+    tablica[2] = &p;
 //     k = p; //jeśli Prostokat nie dziedziczy po Kwadracie to dostaniemy błąd kompilacji
 //     std::cout << k.pole() << '\n';
 //     p = k; // Błąd
-    wypisz_pole(&k);
-    wypisz_pole(&p);
+    for (int i = 0; i < 3; i += 1) {
+        std::cout << tablica[i]->pole() << '\n';
+    }
     
 }
