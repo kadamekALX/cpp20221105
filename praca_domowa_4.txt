@@ -1,0 +1,109 @@
+Gra Sokoban
+
+Pola:
+# - sciana
+. - podloga
+@ - gracz
+o - skrzynia
+_ - pole docelowe
+
+Przykładowy poziom:
+#######
+#.....#
+#.@o_.#
+#.....#
+#######
+
+Zasady:
+1. Gracz może wykonywać kroki w kierunkach góra, dół, lewo, prawo.
+2. Gracz może poruszać się po polach '.' i '_'.
+3. Wejście na pole ze skrzynią ('o') jest wykonalne tylko jeśli następne pole w tym samym kierunku jest puste ('.' lub '_'). Skrzynia jest przesuwana na to pole.
+4. Jeśli na wszystkich polach docelowych znajduje się skrzynia to gracz wygrywa.
+
+
+Plan działania:
+
+Tworzymy klasę Sokoban zawierającą metodę graj(), ktora w petli będzie pytać gracza o kierunek następnego ruchu.
+Po przyjęciu kierunku powinien zostać wypisany nowy stan planszy. graj() kończy się jeśli gracz wygra lub się podda.
+Konstruktor powinien tworzyć jakiś poziom (na start może być hardkodowany)
+
+# Zadanie 1.
+Napisz klasę Sokoban, która będzie tworzyć planszę 5x5 złożoną z pól '.' i graczem na współrzędnych (2, 2).
+Napisz metodę wypisz(), która wypisze na ekran stan planszy.
+Wywołanie kodu
+```
+	Sokoban s;
+	s.wypisz();
+```
+powinno wypisać na ekran:
+.....
+.....
+..@..
+.....
+.....
+
+# Zadanie 2.
+Zaimplementuj metodę graj(), która w nieskończoność będzie pytać gracza o kierunek następnego ruchu [w-góra, s-dół, d-prawo, a-lewo] i odpowiednio przemieszczać go po planszy
+.....
+.....
+..@..
+.....
+.....
+pod wciścieciu 'd' powinno sie wypisac
+.....
+.....
+...@.
+.....
+.....
+
+
+# Zadanie 3.
+Zaimplementuj ściany. Próba wejścia na ścianę nie robi żadnego ruchu. Generowany poziom powinien wygladac tak:
+#####
+#...#
+#.@.#
+#...#
+#####
+
+
+# Zadanie 4.
+Zaimplementuj skrzynie. Wejście na skrzynie przsuwa ją na następne pole tylko jeśli jest ono wolne. Jeśli nie to nic się nie dzieje. Generowany poziom powinien zawierać skrzynię na polu (1, 2):
+.....
+.....
+.o@..
+.....
+.....
+pod wciścieciu 'a' powinno sie wypisac
+.....
+.....
+o@...
+.....
+.....
+
+Przykład z 2. skrzyniami:
+.....
+.....
+oo@..
+.....
+.....
+pod wciścieciu 'a' powinno sie wypisac
+.....
+.....
+oo@..
+.....
+.....
+(Czyli nic się nie stało)
+
+# Zadanie 5.
+Jeśli zadania 3 i 4 zostały rozwiązane osobno to połącz ich rozwiązania w jednym projekcie (tzn. tak aby były obecne zarówno przesuwalne skrzynie jak i ściany).
+
+Zadanie 6.
+Zaimplementuj pola docelowe ('_') i zastąp nimi kilka pól podłogi (najlepiej dokładnie tyle ile jest skrzyń; warto też zadbać, żeby grę dało się wygrać ;]).
+Powinny zachowywać się jak podłoga (tzn. można po nich chodzić i wpychać na nie skrzynie), ale jeśli na wszystkich
+polach docelowych znajdą się skrzynie to gracz wygrywa i program się kończy.
+Przykładowy poziom (wciśnięcie 'd'[prawo] prowadzi do wygranej):
+#####
+#...#
+#@o_#
+#...#
+#####
