@@ -1,22 +1,16 @@
 #include <iostream>
 
-const int KWADRAT = 0;
-const int PROSTOKAT = 1;
-
 class Kwadrat {
 public:
     Kwadrat(double x);
-    double pole() const;
+    virtual double pole() const;
     void setBok(double x);
     double getBok() const;
-
-    int typ;
 private:
     double bok;
 };
 
 Kwadrat::Kwadrat(double x) {
-    typ = KWADRAT;
     setBok(x);
 }
 
@@ -35,7 +29,7 @@ double Kwadrat::getBok() const {
 class Prostokat : public Kwadrat {
 public:
     Prostokat(double a, double b);
-    double pole() const;
+    double pole() const override;
     void setBok2(double a);
     double getBok2() const;
 private:
@@ -45,7 +39,6 @@ private:
 Prostokat::Prostokat(double a, double b) 
  : Kwadrat{a}
 {
-    typ = PROSTOKAT;
     setBok2(b);
 }
 double Prostokat::pole() const {
@@ -58,21 +51,26 @@ double Prostokat::getBok2() const {
     return bok2;
 }
 
-// zmienna typu Kwadrat zawsze będzie zawierać obiekt typu Kwadrat
-// wskaźnik lub referencja na Kwadrat może zawierać obiekt dziedzczący po typie Kwadrat
+// // zmienna typu Kwadrat zawsze będzie zawierać obiekt typu Kwadrat
+// // wskaźnik lub referencja na Kwadrat może zawierać obiekt dziedzczący po typie Kwadrat
+// void wypisz_pole(Kwadrat* k) {
+//     //dynamic_cast działa tylko dla wskaźnikow i referencji
+//     Prostokat* p = dynamic_cast<Prostokat*>(k); //dynamic cast rzutuje na podany typ pod warunkiem, że pod zadanym adresem faktycznie znajduje się obiekt tego typu. Działa tylko jeśli typ, na który rzutujemy dziedziczy po typie rzutowanym.
+//     if (p != nullptr) { // rzutowanie się udało
+//         std::cout << "Pole = " << p->pole() << '\n';
+//     }
+//     else {
+//         std::cout << "Pole = " << k->pole() << '\n';
+//     }
+// }
+
 void wypisz_pole(Kwadrat* k) {
-    if (k->typ == PROSTOKAT) {
-        Prostokat* p = static_cast<Prostokat*>(k); //rzutujemy wskaźnik k na typ Prostokąt*
-        std::cout << "Pole = " << p->pole() << '\n';
-    }
-    else {
-        std::cout << "Pole = " << k->pole() << '\n';
-    }
+    std::cout << "Pole = " << k->pole() << '\n';
 }
 
 int main() {
     Kwadrat k{7};
-    Prostokat p{3, 5};
+    Prostokat p{3, 7};
 //     k = p; //jeśli Prostokat nie dziedziczy po Kwadracie to dostaniemy błąd kompilacji
 //     std::cout << k.pole() << '\n';
 //     p = k; // Błąd
