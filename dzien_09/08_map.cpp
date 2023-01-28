@@ -25,10 +25,3 @@ int main() {
 //     T first;
 //     U second;
 // };
-
-
-//Napisz program "bankowy", który bedzie przechowywal stan konta roznych uzytkownikow i w pętli nieskończonej pytał po kolei o nazwe uzytkownika i rodzaj operacji do wykonania. Dostepne rodzaje operacji:
-// - stan_konta - wyswietla stan konta dla podanego użytkownika
-// - wplac - przyjmuje od uzytkownika kwote i zwieksza jego stan konta o tyle samo.
-// - wyplac - przyjmuje od uzytkownika kwote i, jeśli stan konta jest wystarczający, zmniejsza stan konta o tyle samo. Jeśli nie ma wystarczająco środków wypisz komunikat i nic nie wypłacaj.
-// Do przechowywania informacji o stanie konta użyj obiektu typu std::map<std::string, int>
