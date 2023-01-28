@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 //Przerób klasę Tablica na klasę szablonową parametryzowaną typem przechowywanych wartości.
 // Tablica<int> tab{3};
@@ -9,7 +10,7 @@
 template <typename T>
 class Tablica {
 public:
-    Tablica(int n);
+    Tablica();
     Tablica(const Tablica& t);
     ~Tablica();
     
@@ -32,13 +33,10 @@ private:
 };
 
 template <typename T>
-Tablica<T>::Tablica(int n) {
-    tab = new T[n];
-    rozm = n;
-    pojemnosc = n;
-//     for (int i = 0; i < n; i += 1) {
-//         tab[i] = 0;
-//     }
+Tablica<T>::Tablica() {
+    pojemnosc = 1;
+    tab = new T[pojemnosc];
+    rozm = 0;
 }
 
 template <typename T>
@@ -113,9 +111,14 @@ void Tablica<T>::dodaj(T x) {
 }
 
 int main() {
-    Tablica<double> t{1};
-    for (int i = 1; i < 1000000; i += 1) {
-        t.dodaj(i);
-    }
-    std::cout << t.rozmiar() << '\n';
+    Tablica<double> t;
+    t.dodaj(1.2);
+    t.dodaj(2.3);
+    t.dodaj(3.4);
+    t.wypisz();
+    Tablica<std::string> stringi;
+    stringi.dodaj("Ala");
+    stringi.dodaj("ma");
+    stringi.dodaj("kota");
+    stringi.wypisz();
 }
