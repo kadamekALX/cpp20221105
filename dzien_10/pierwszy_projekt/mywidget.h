@@ -13,7 +13,5 @@ public:
     ~MyWidget();
 
 private:
-    QPushButton* przycisk;
-    QPushButton* przycisk2;
 };
 #endif // MYWIDGET_H

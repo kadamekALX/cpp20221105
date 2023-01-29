@@ -7,7 +7,7 @@ class CounterButton : public QPushButton
 {
     Q_OBJECT
 public:
-    CounterButton(QWidget* parent);
+    CounterButton(QWidget* parent = nullptr);
 public slots:
     void przyciskWcisniety();
 private:
